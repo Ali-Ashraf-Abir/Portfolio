@@ -3,6 +3,13 @@ import React, { useState } from 'react';
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
+  const scrollToSection = (id) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <nav className="fixed top-0 left-0 w-full z-50 bg-transparent font-nunito">
       <div className=" mx-auto px-4 sm:px-6 lg:px-[5vw]">
@@ -15,12 +22,23 @@ export default function Navbar() {
             <a href="#" className="hover:text-gray-300">
               Home
             </a>
-            <a href="#" className="hover:text-gray-300">
-              About
-            </a>
-           
-            <a href="#" className="hover:text-gray-300">
+
+
+            <button
+              onClick={() => scrollToSection("contact")}
+              className=""
+            >
               Contact
+            </button>
+
+            <a
+              href="resume.pdf"
+              download="Ali_Ashraf_Abir_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-lg hover:text-gray-300"
+            >
+              Download Resume
             </a>
           </div>
 
@@ -75,16 +93,12 @@ export default function Navbar() {
           >
             Home
           </a>
+
           <a
-            href="#"
+            href="#contact"
             className="block px-4 py-2 text-white hover:bg-gray-700"
           >
-            About
-          </a>
-          <a
-            href="#"
-            className="block px-4 py-2 text-white hover:bg-gray-700"
-          >
+
             Contact
           </a>
         </div>

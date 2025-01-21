@@ -46,7 +46,6 @@ export default function Intro() {
 
                     <p className='text-[2vh] lg:text-[2vh] text-[#F2A07B] flex justify-center items-end font-OSwald'>
 
-                        Here’s a concise and impactful description for your full-stack developer portfolio:
 
                         "I'm a passionate full-stack developer with expertise in building scalable, efficient, and user-centric web applications. Proficient in modern technologies like React, Node.js, and databases like MongoDB, I thrive on creating seamless front-end interfaces and robust back-end architectures. I enjoy problem-solving, learning new tools, and turning ideas into reality through code. Let’s build something great together!"
 

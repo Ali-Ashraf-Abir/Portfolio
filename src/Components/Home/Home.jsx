@@ -7,6 +7,8 @@ import { update } from 'three/examples/jsm/libs/tween.module.js';
 import Intro from './Intro';
 import Skills from './Skills';
 import Projects from './Projects';
+import EducationAndCertifications from './Certificates';
+import ContactMe from './Contact';
 
 
 
@@ -388,7 +390,7 @@ const Home = () => {
             scrollTimeout = setTimeout(() => {
                 isScrolling = false;
                 console.log('Scrolling stopped:', camera.rotation.x, camera.rotation.y);
-            }, 1000); // Adjust delay to suit your scroll detection needs
+            }, 3000); // Adjust delay to suit your scroll detection needs
         };
 
         let scrollTimeout = null;
@@ -465,22 +467,27 @@ const Home = () => {
                     duration: 1,
                     scrollTrigger: {
                         trigger: ref.current,
-                        start: 'top 60%',
-                        end: 'bottom 0%',
-                        onEnter: () => gsap.to(ref.current, { opacity: 1, scale: 1, duration: 1 }),
-                        onLeave: () => gsap.to(ref.current, { opacity: 0, scale: 0.5, duration: 0.2 }),
-                        onEnterBack: () => gsap.to(ref.current, { opacity: 1, scale: 1 }),
-                        onLeaveBack: () => gsap.to(ref.current, { opacity: 0, scale: 0.5 }),
+                        start: "top 60%",
+                        end: "bottom 0%",
+                        scrub: true, // Smoothens the animation with the scroll
+                        onEnter: () => gsap.to(ref.current, { opacity: 1, scale: 1, duration: 1,overwrite:'auto' }),
+                        onLeave: () => gsap.to(ref.current, { opacity: 0, scale: 0.5, duration: 0.5,overwrite:'auto' }),
+                        onEnterBack: () => gsap.to(ref.current, { opacity: 1, scale: 1,overwrite:'auto' }),
+                        onLeaveBack: () => gsap.to(ref.current, { opacity: 0, scale: 0.5,overwrite:'auto' }),
                     },
                 }
             );
         };
-
+    
         createScrollAnimation(aboutRef);
         createScrollAnimation(skillsRef);
         createScrollAnimation(projectsRef);
         createScrollAnimation(experienceRef);
         createScrollAnimation(contactRef);
+    
+        // Refresh ScrollTrigger to recalculate positions
+
+        return () => ScrollTrigger.kill(); // Cleanup on component unmount
     }, []);
 
     return (
@@ -518,7 +525,7 @@ const Home = () => {
 
 
             <div
-                className="absolute top-0 left-0 w-full h-[600vh] pointer-events-none opacity-[0.05]"
+                className="absolute top-0 left-0 w-full h-[500vh] pointer-events-none opacity-[0.05]"
                 dangerouslySetInnerHTML={{
                     __html: `
 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
@@ -561,14 +568,14 @@ const Home = () => {
                 ref={experienceRef}
                 className="h-screen flex justify-center items-center text-3xl text-white sticky top-0"
             >
-                Experience
+               <EducationAndCertifications></EducationAndCertifications>
             </div>
             <div
                 id="contact"
                 ref={contactRef}
                 className="h-screen flex justify-center items-center text-3xl text-white sticky top-0"
             >
-                Contact
+                <ContactMe></ContactMe>
             </div>
         </>
 
