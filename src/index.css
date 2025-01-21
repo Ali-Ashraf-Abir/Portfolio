@@ -1,0 +1,17 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Modak&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Playwrite+DE+Grund:wght@100..400&family=Rubik+Distressed&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes noiseAnimation {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(5px, 5px); }
+}
+.grainy-effect {
+  animation: noiseAnimation 1s infinite;
+}
